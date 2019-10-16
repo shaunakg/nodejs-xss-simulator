@@ -37,7 +37,7 @@ io.on('connection', function(socket){
     socket.on('ctfc', function(new_text) {
 
         console.log("Text changed to: " + new_text);
-        io.emit('stfc', new_text);
+        socket.broadcast.emit('stfc', new_text);
 
     });
 
