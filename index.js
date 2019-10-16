@@ -23,8 +23,6 @@ app.get('/jquery-1.11.1.js', function(req, res){
 
 io.on('connection', function(socket){
 
-    socket.emit('stfc', current_text);
-
     socket.on('ctfc', function(new_text) {
         current_text = new_text;
         socket.broadcast.emit('stfc', current_text);
