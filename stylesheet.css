@@ -1,0 +1,27 @@
+
+body {
+    font-family: Helvetica, sans-serif;
+    margin: 20px;
+    text-align: center;
+    align-content: center;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+textarea {
+    border: none;
+    background-image: linear-gradient(to right, #FFF, #bae0eb);
+    border-radius: 10px;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+checkbox {
+    border: 1px solid black;
+    background: none;
+}
+
+input[type=checkbox]:checked {
+    background-color: darkblue;
+}

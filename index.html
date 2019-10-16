@@ -4,9 +4,9 @@
 
 		<title>XSS Simulator</title>
 		
-		<!-- <link rel="stylesheet" href="stylesheet.css"> -->
+		<link rel="stylesheet" href="stylesheet.css">
 
-		<script src="/socket.io/socket.io.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <script>
@@ -19,7 +19,8 @@
     </head>
 
     <body>
-        <textarea rows=20 cols=50 id="text-field"></textarea><br>
+        <h1>XSS Simulator</h1>
+        <textarea rows=20 cols=80 id="text-field"></textarea><br><br>
         <input type="checkbox" id="renderAsHTML" value=false><label for="renderAsHTML">Render the below text as HTML (note: any scripts will be executed)!</label>
         <br>
         <p id="tgh"></p>
