@@ -41,7 +41,6 @@
     };
 
     text_field.oninput = function () {
-        console.log("sending: " + text_field.value);
         
         if (renderHTML.checked) {
             tgh.innerHTML = text_field.value;
@@ -53,7 +52,6 @@
     };
 
     socket.on('stfc', function (new_text) {
-        console.log("Outbound new text: " + new_text);
         text_field.oninput = undefined;
 
         if (renderHTML.checked) {
