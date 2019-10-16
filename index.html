@@ -19,7 +19,8 @@
     </head>
 
     <body>
-        <textarea rows=20 cols=50 id="text-field"></textarea>
+        <textarea rows=20 cols=50 id="text-field"></textarea><br>
+        <input type="checkbox" id="renderAsHTML" value=false><label for="renderAsHTML">Render the below text as HTML (note: any scripts will be executed)!</label>
         <br>
         <p id="tgh"></p>
     </body>
@@ -28,16 +29,38 @@
 
     var text_field = document.getElementById("text-field");
     var tgh = document.getElementById('tgh');
+    var renderHTML = document.getElementById("renderAsHTML");
+
+    renderHTML.oninput = function () {
+        if (renderHTML.checked) {
+            tgh.innerHTML = tgh.innerText;
+        } else {
+            tgh.innerText = tgh.innerHTML;
+        }
+    };
 
     text_field.oninput = function () {
         console.log("sending: " + text_field.value);
+        
+        if (renderHTML.checked) {
+            tgh.innerHTML = text_field.value;
+        } else {
+            tgh.innerText = text_field.value;
+        }
+
         socket.emit('ctfc', text_field.value);
     };
 
     socket.on('stfc', function (new_text) {
         console.log("Outbound new text: " + new_text);
         text_field.oninput = undefined;
-        tgh.innerHTML = new_text;
+
+        if (renderHTML.checked) {
+            tgh.innerHTML = new_text;
+        } else {
+            tgh.innerText = new_text;
+        }
+
         text_field.value = new_text;
         text_field.oninput = function () {
             socket.emit('ctfc', text_field.value);
