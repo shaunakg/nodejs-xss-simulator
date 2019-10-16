@@ -1,0 +1,5 @@
+{
+    "name": "Remote XSS Simulator",
+    "description": "A barebones Node.js app using Express",
+    "keywords": ["node", "express", "heroku", "xss"]
+}

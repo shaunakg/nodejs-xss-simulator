@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+ 	<head>
+
+		<title>WorldChat Online</title>
+		
+		<!-- <link rel="stylesheet" href="stylesheet.css"> -->
+
+		<script src="/socket.io/socket.io.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+        <script>
+        
+        var now = new Date();
+        var socket = io();
+        
+        </script>
+
+    </head>
+
+    <body>
+        <textarea rows=20 cols=50 id="text-field"></textarea>
+        <br>
+        <p id="tgh"></p>
+    </body>
+
+    <script>
+
+    var text_field = document.getElementById("text-field");
+    var tgh = document.getElementById('tgh');
+
+    text_field.oninput = function () {
+        console.log("sending: " + text_field.value);
+        socket.emit('ctfc', text_field.value);
+    };
+
+    socket.on('stfc', function (new_text) {
+        console.log("Outboud new text: " + new_text);
+        text_field.oninput = undefined;
+        tgh.innerHTML = new_text;
+        text_field.value = new_text;
+        text_field.oninput = function () {
+            socket.emit('ctfc', text_field.value);
+        };
+    });
+
+    </script>
+
