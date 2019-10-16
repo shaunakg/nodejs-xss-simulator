@@ -25,3 +25,10 @@ checkbox {
 input[type=checkbox]:checked {
     background-color: darkblue;
 }
+
+#tgh {
+    font-family: monospace;
+    padding: 10px;
+    border: 1px solid red;
+    word-wrap: break-word;
+}
