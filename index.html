@@ -7,7 +7,6 @@
 		<link rel="stylesheet" href="stylesheet.css">
 
         <script src="/socket.io/socket.io.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
         <script>
         
@@ -16,14 +15,32 @@
         
         </script>
 
+        <noscript>
+
+            <b>Sorry, this site can't run without JavaScript.</b>
+
+        </noscript>
+
     </head>
 
     <body>
         <h1>XSS Simulator</h1>
-        <textarea rows=20 cols=80 id="text-field"></textarea><br><br>
+        <textarea rows=10 cols=70 id="text-field"></textarea><br><br>
         <input type="checkbox" id="renderAsHTML" value=false><label for="renderAsHTML">Render the below text as HTML (note: any scripts will be executed)!</label>
+
         <br>
-        <p id="tgh"></p>
+
+        <p id="tgh"></p><br>
+
+        <p class="xss-info">
+            <b>Learn more about XSS vulnerabilities</b><br>
+            OWASP: <a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)</a><br>
+            Wikipedia: <a href="https://en.wikipedia.org/wiki/Cross-site_scripting">https://en.wikipedia.org/wiki/Cross-site_scripting</a><br>
+            Play Google's XSS game: <a href="https://xss-game.appspot.com/">https://xss-game.appspot.com/</a><br>
+        </p>
+
+        <a href="https://github.com/shaunakg/nodejs-xss-simulator" target="_blank" rel="noopener"><span class="bottom-bar">Made with ❤️ by @shaunakg.</span></a>
+
     </body>
 
     <script>
@@ -31,6 +48,8 @@
     var text_field = document.getElementById("text-field");
     var tgh = document.getElementById('tgh');
     var renderHTML = document.getElementById("renderAsHTML");
+
+    tgh.innerText = "--";
 
     renderHTML.oninput = function () {
         if (renderHTML.checked) {
@@ -41,7 +60,6 @@
     };
 
     text_field.oninput = function () {
-        console.log("sending: " + text_field.value);
         
         if (renderHTML.checked) {
             tgh.innerHTML = text_field.value;
@@ -50,10 +68,10 @@
         }
 
         socket.emit('ctfc', text_field.value);
+
     };
 
     socket.on('stfc', function (new_text) {
-        console.log("Outbound new text: " + new_text);
         text_field.oninput = undefined;
 
         if (renderHTML.checked) {
