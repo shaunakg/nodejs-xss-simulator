@@ -30,7 +30,7 @@ app.get('/stylesheet.css', function(req, res){
 // Reset function (unsecured)
 app.get('/reset', function (req, res) {
     res.send('--- XSS SIMULATOR API ---\nSent empty server page update. This option is now locked for 1 minute.');
-    io.broadcast.emit('stfc', "");
+    io.emit('stfc', "");
 });
 
 // On connection
