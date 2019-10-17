@@ -29,8 +29,8 @@ app.get('/stylesheet.css', function(req, res){
 
 // Reset function (unsecured)
 app.get('/reset', function (req, res) {
-    res.send('--- XSS SIMULATOR API ---\nSent empty server page update. This option is now locked for 1 minute.');
-    io.emit('stfc', "");
+    res.send('--- XSS SIMULATOR API ---<br>Sent empty server page update.');
+    io.emit('stfc', "[The server was manually reset]");
 });
 
 // On connection
