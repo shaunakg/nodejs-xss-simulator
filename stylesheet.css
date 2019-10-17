@@ -24,7 +24,7 @@ textarea {
     color: white;
     padding: 10px;
     border-radius: 10px;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: monospace;
 }
 
 checkbox {
@@ -37,7 +37,6 @@ input[type=checkbox]:checked {
 }
 
 #tgh {
-    font-family: monospace;
     padding: 10px;
     border: 1px solid red;
     word-wrap: break-word;
