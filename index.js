@@ -27,6 +27,10 @@ app.get('/stylesheet.css', function(req, res){
     });
 });
 
+app.get("/connection_script.js", (req, res) => {
+    res.sendFile(__dirname + "/connection_script.js");
+});
+
 // Reset function (unsecured)
 app.get('/reset', function (req, res) {
     res.send('--- XSS SIMULATOR API ---<br>Sent empty server page update.');
