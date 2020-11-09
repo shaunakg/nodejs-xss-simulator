@@ -11,8 +11,11 @@
 var app = require('express')();
 var http = require('http').createServer(app);
 var io = require('socket.io')(http);
+var cors = require("cors");
 const PORT = process.env.PORT || 8080;
 var current_text = "";
+
+app.use(cors());
 
 // Tell Express what to serve
 // Index page
